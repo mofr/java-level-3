@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,16 +12,11 @@ import java.sql.Statement;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserManagerTest {
-    private static final String DATABASE_FILENAME = "test_database.db";
-    private static final String DATABASE_URL = "jdbc:sqlite:" + DATABASE_FILENAME;
-
     private Connection connection;
 
     @BeforeEach
     void setupDatabase() throws SQLException {
-        File dbFile = new File(DATABASE_FILENAME);
-        dbFile.delete();
-        connection = DriverManager.getConnection(DATABASE_URL);
+        connection = DriverManager.getConnection("jdbc:sqlite:");
         Statement statement = connection.createStatement();
         statement.executeUpdate("create table users (id string primary key, name string not null, password string not null)");
     }
