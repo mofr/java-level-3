@@ -18,7 +18,7 @@ public class Server {
 
         try {
             serverSocket = new ServerSocket(PORT);
-            UserManager userManager = new UserManager();
+            UserManager userManager = new UserManager(null);  // TODO replace null with a real db connection
             System.out.println("Сервер запущен, порт " + PORT);
 
             while (true) {

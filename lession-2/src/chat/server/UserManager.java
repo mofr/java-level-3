@@ -9,7 +9,7 @@ public class UserManager {
     private PreparedStatement preparedStatement = null;
     private Statement statement = null;
 
-    public UserManager() {
+    public UserManager(Connection connection) {
 
 
     }
